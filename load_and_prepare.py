@@ -6,6 +6,7 @@ import xml.etree.ElementTree
 import pandas as pd
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 
 import yaml
@@ -19,7 +20,9 @@ def main():
 
     iris = datasets.load_iris()
     df = pd.DataFrame(iris.data, columns = iris.feature_names)
-    df['target'] = iris.target_names[iris.target]
+
+    le = LabelEncoder()
+    df['target'] = le.fit_transform(iris.target_names[iris.target])
 
     train, test = train_test_split(df, test_size=split, random_state=seed)
 
