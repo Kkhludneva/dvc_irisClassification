@@ -1,0 +1,4 @@
+load_and_prepare:
+  split: 0.20
+  seed: 32
+

@@ -1,0 +1,11 @@
+stages:
+  load_and_prepare:
+    cmd: python src/load_and_prepare.py
+    deps:
+    - data/data.xml
+    - src/load_and_prepare.py
+    params:
+    - load_and_prepare.seed
+    - load_and_prepare.split
+    outs:
+    - data/prepared
