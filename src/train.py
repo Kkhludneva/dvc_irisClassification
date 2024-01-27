@@ -54,7 +54,7 @@ def train(model, train_loader, optimizer, criterion, n_epochs):
 
 
 def main():
-    params = yaml.safe_load(open("params.yaml"))["train"]
+    params = yaml.safe_load(open("../params.yaml"))["train"]
     opt_name = params["optimizer"]
     learning_rate = params["lr"]
     n_epochs = params["epochs"]
@@ -77,12 +77,12 @@ def main():
 
     criterion = torch.nn.CrossEntropyLoss()
 
-    myDs = IrisDatatset('data/prepared/train.csv')
+    myDs = IrisDatatset('../data/prepared/train.csv')
     train_loader = DataLoader(myDs,batch_size=16,shuffle=False)
 
     model_tr = train(model, train_loader, opt, criterion, n_epochs)
 
-    torch.save(model_tr.state_dict(),'model.pkl')
+    torch.save(model_tr.state_dict(), '../model.pkl')
 
 if __name__ == "__main__":
     main()

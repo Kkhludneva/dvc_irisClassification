@@ -14,7 +14,7 @@ import yaml
 
 def main():
 
-    params = yaml.safe_load(open("params.yaml"))["load_and_prepare"]
+    params = yaml.safe_load(open("../params.yaml"))["load_and_prepare"]
 
     split = params["split"]
     seed = params["seed"]
