@@ -2,3 +2,7 @@ load_and_prepare:
   split: 0.20
   seed: 32
 
+train:
+  lr: 0.01
+  optimizer: "SDG"
+  epochs: 15
