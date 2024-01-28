@@ -10,7 +10,7 @@ stages:
     outs:
     - data/prepared
   train:
-    cmd: python src/train.py data/features model.pkl
+    cmd: python src/train.py model.pkl
     deps:
       - data/prepared
       - src/train.py
@@ -20,3 +20,22 @@ stages:
     - train.epochs
     outs:
       - model.pkl
+  evaluate:
+    cmd: python evaluate.py model.pkl
+    deps:
+      - model.pkl
+      - src/evaluate.py
+    metrics:
+      - metrics.json:
+          cache:false
+    plots:
+      - roc.json:
+          cache: false
+          x: fpr
+          y: tpr
+      - pr_rec.json:
+          cache: false
+          x: recall
+          y: precision
+    outs:
+      - importance.png
